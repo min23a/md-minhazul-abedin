@@ -1,0 +1,17 @@
+{
+    "layout": "theme_custom",
+    "sections": {
+    "header":{
+        "type": "test-header",
+        "settings": {
+            "logo_text": "Tisso Vision",
+            "announcement": "<p>Find the ideal gift for your loved ones.</p>",
+            "btn_text": "Choose Gift"
+        }
+    },
+    
+  },
+  "order": [
+    "header"
+  ]
+}

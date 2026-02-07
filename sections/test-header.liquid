@@ -1,0 +1,74 @@
+{{ "test-header.css" | asset_url | stylesheet_tag }}
+
+{% style %}
+  header {
+    --button-color: {{ section.settings.btn_clr }};
+    --button-hvr-clr: {{ section.settings.btn__hvr_clr }};
+  }
+{% endstyle %}
+
+<div id="header-{{section.id}}" class="test_header">
+  <div class="logo">
+    <a class="logo_link" href={{section.settings.logo_url}}>{{ section.settings.logo_text }}</a>
+  </div>
+  <div class="announcement">
+    {{ section.settings.announcement }}
+  </div>
+  <div class="cta">
+    <a class="cta_link" href={{section.settings.btn_url}}>{{ section.settings.btn_text }}</a>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "test-header",
+    "tag": "header",
+    "class": "test-header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Logo Text",
+        "default": "Tisso Vision"
+      },
+      {
+        "type": "url",
+        "id": "logo_url",
+        "label": "Link"
+      },
+      {
+        "type": "richtext",
+        "id": "announcement",
+        "label": "announecment",
+        "default": "<p>Find the ideal gift for your loved ones.</p>"
+      }, {
+        "type": "text",
+        "id": "btn_text",
+        "label": "CTA Text",
+        "default": "Choose Gift"
+      }, {
+        "type": "url",
+        "id": "btn_url",
+        "label": "CTA Url"
+      }, {
+        "type": "color",
+        "id": "btn_clr",
+        "label": "Button Color"
+      }, {
+        "type": "color",
+        "id": "btn__hvr_clr",
+        "label": "Button Hover Color"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Test Header"
+      }
+    ]
+  }
+{% endschema %}

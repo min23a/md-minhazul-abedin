@@ -1,15 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "layout": "theme_custom",
-    "sections": {
-    "header":{
-        "type": "test-header",
-        "settings": {
-            "logo_text": "Tisso Vision",
-            "announcement": "<p>Find the ideal gift for your loved ones.</p>",
-            "btn_text": "Choose Gift"
-        }
-    },
-    
+  "layout": "theme_custom",
+  "sections": {
+    "header": {
+      "type": "test-header",
+      "settings": {
+        "logo_text": "Tisso Vision",
+        "logo_url": "shopify://collections/frontpage",
+        "announcement": "<p>Find the ideal gift for your loved ones.</p>",
+        "btn_text": "Choose Gift",
+        "btn_url": "shopify://collections/all",
+        "btn_clr": "#fff544",
+        "btn__hvr_clr": "#000000"
+      }
+    }
   },
   "order": [
     "header"

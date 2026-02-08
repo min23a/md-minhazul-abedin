@@ -1,0 +1,138 @@
+.banner {
+  position: relative;
+  width: 100%;
+  padding: 0 8rem;
+}
+
+/* background image */
+.banner__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.banner__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/*section height */
+.banner {
+  min-height: 360px;
+}
+@media screen and (min-width: 750px) {
+  .banner {
+    min-height: 460px;
+  }
+}
+@media screen and (min-width: 990px) {
+  .banner {
+    min-height: 560px;
+  }
+}
+
+/* Overlay layer */
+.banner__overlay {
+  position: relative;
+  top: 0;
+  width: 100%;
+  min-height: 560px;
+}
+
+/* Content box */
+.banner__content {
+  position: absolute;
+  z-index: 2;
+  padding: 16px;
+  min-width: 40rem;
+  max-width: 400px;
+  width: min(400px, 100%);
+  padding: 14px 16px;
+  background: #fff;
+  color: #000;
+  backdrop-filter: blur(2px);
+}
+
+/*position mapping */
+.banner__overlay--top-left {
+  top: 10%;
+  left: 0;
+}
+.banner__overlay--top-center {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.banner__overlay--top-right {
+  top: 10%;
+  right: 10%;
+  text-align: right;
+}
+
+.banner__overlay--middle-left {
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+}
+.banner__overlay--middle-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.banner__overlay--middle-right {
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+.banner__overlay--bottom-left {
+  bottom: 5%;
+  left: 0%;
+}
+.banner__overlay--bottom-center {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.banner__overlay--bottom-right {
+  bottom: 5%;
+  right: 0%;
+  text-align: right;
+}
+
+/* banner cta */
+.banner_cta {
+  width: 100%;
+}
+
+.banner__overlay--top-center .cta,
+.banner__overlay--middle-center .cta,
+.banner__overlay--bottom-center .cta {
+  margin: auto;
+}
+
+.banner__overlay--top-right .cta,
+.banner__overlay--middle-right .cta,
+.banner__overlay--bottom-right .cta {
+  margin-left: auto;
+}
+
+/* Bottom content */
+.banner__bottom {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  text-align: center;
+  z-index: 3;
+  background: #eaeaea;
+  width: 100%;
+}
+
+.banner .cta {
+  max-width: 200px;
+}

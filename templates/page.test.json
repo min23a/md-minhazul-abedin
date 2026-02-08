@@ -13,9 +13,16 @@
         "btn_clr": "#fff544",
         "btn__hvr_clr": "#000000"
       }
+    },
+    "banner" :{
+      "type": "test-banner",
+      "settings": {
+
+      }
     }
   },
   "order": [
-    "header"
+    "header",
+    "banner"
   ]
 }

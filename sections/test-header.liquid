@@ -14,9 +14,13 @@
   <div class="announcement">
     {{ section.settings.announcement }}
   </div>
-  <div class="cta">
-    <a class="cta_link test-link" href={{section.settings.btn_url}}>{{ section.settings.btn_text }} {{ 'icon-test-arrow.svg' | inline_asset_content }}</a>
-  </div>
+  {% render 'test-cta'
+    , inverse: false
+    ,
+ cta: section.settings.btn_url
+    ,
+ cta_text: section.settings.btn_text
+  %}
 </div>
 
 

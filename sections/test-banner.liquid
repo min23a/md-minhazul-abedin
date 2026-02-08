@@ -1,0 +1,144 @@
+{{ "test-banner.css" | asset_url | stylesheet_tag }}
+
+{% assign settings = section.settings %}
+
+{% style %}
+  .banner {
+    --button-color: {{ section.settings.btn_clr }};
+    --button-hvr-clr: {{ section.settings.btn__hvr_clr }};
+  }
+{% endstyle %}
+
+
+<section class="banner banner--{{ section.id }}">
+  <div class="banner__media">
+    {% if settings.img != blank %}
+      {{ settings.img
+ | image_url: width: 2000
+ | image_tag:
+ widths: '375, 550, 750, 990, 1100, 1500, 2000',
+ sizes: '(min-width: 990px) 100vw, 100vw',
+ loading: 'lazy',
+ class: 'banner__img'
+      }}
+    {% endif %}
+  </div>
+
+  <div class="banner__overlay ">
+    <div class="banner__content banner__overlay--{{ settings.content_position }}">
+      {% if settings.heading != blank %}
+        <h2 class="banner__heading">{{ settings.heading }}</h2>
+      {% endif %}
+      {% if settings.text != blank %}
+        <p class="banner__text">{{ settings.text }}</p>
+      {% endif %}
+      {% if settings.cta_text != blank %}
+        <div class="banner_cta">
+          {% render 'test-cta'
+            , inverse: true
+            , cta: settings.cta
+            , cta_text: settings.cta_text %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="banner__bottom">
+    {% if settings.bottom_text != blank %}
+      <div class="banner__bottom-inner">
+        {{ settings.bottom_text }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "test-banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Banner Content"
+      },
+      {
+        "type": "select",
+        "id": "content_position",
+        "label": "Content Position",
+        "default": "bottom-left",
+        "options": [
+          {
+            "value": "top-left",
+            "label": "Top Left"
+          },
+          {
+            "value": "top-center",
+            "label": "Top Center"
+          },
+          {
+            "value": "top-right",
+            "label": "Top Right"
+          },
+          {
+            "value": "middle-left",
+            "label": "Middle Left"
+          }, {
+            "value": "middle-center",
+            "label": "Middle Center"
+          }, {
+            "value": "middle-right",
+            "label": "Middle Right"
+          }, {
+            "value": "bottom-left",
+            "label": "Bottom Left"
+          }, {
+            "value": "bottom-center",
+            "label": "Bottom Center"
+          }, {
+            "value": "bottom-right",
+            "label": "Bottom Right"
+          }
+        ]
+      }, {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Heading"
+      }, {
+        "type": "richtext",
+        "id": "text",
+        "label": "Subheading",
+        "default": "<p>Subheading</p>"
+      }, {
+        "type": "text",
+        "id": "cta_text",
+        "label": "Button Label"
+      }, {
+        "type": "url",
+        "id": "cta",
+        "label": "URL"
+      }, {
+        "type": "color",
+        "id": "btn_clr",
+        "label": "Button Color"
+      }, {
+        "type": "color",
+        "id": "btn__hvr_clr",
+        "label": "Button Hover Color"
+      }, {
+        "type": "richtext",
+        "id": "bottom_text",
+        "label": "Bottom Headline"
+      }
+    ]
+  }
+{% endschema %}

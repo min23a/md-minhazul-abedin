@@ -1,0 +1,136 @@
+{% assign inverse = inverse %}
+<div class="cta">
+  <a class="cta_link{% if inverse == true %}-inverse{% endif %} test-link " href={{cta}}>{{ cta_text }} {{ 'icon-test-arrow.svg' | inline_asset_content }}</a>
+</div>
+
+<style>
+  .cta {
+    padding: 1rem;
+    background: var(--button-color);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  {% if inverse == false %}
+    .cta_link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta_link:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      transform: translateX(-100%);
+      top: 0;
+      background: var(--button-hvr-clr);
+      height: 100%;
+      width: 100%;
+      animation: slideOut 0.4s forwards ease-in;
+    }
+
+    .cta_link:hover::before {
+      animation: slideIn 0.4s forwards ease-out;
+    }
+
+    .cta_link svg,
+    .cta_link-inverse svg {
+      margin-left: 1rem;
+    }
+
+    .cta_link
+    , .cta_link svg path, {
+      animation: textDark 0.4s forwards;
+    }
+
+    .cta_link:hover,
+    .cta_link:hover svg path {
+      animation: textLight 0.4s forwards;
+    }
+
+  {% endif %}
+
+  .cta .test-link {
+    padding: 0 3rem;
+  }
+
+  {% if inverse == true %}
+    /* inverse one */
+    .cta_link-inverse {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta_link-inverse:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      transform: translateX(-100%);
+      top: 0;
+      background: var(--button-hvr-clr);
+      height: 100%;
+      width: 100%;
+      animation: slideOut 0.4s forwards ease-in;
+    }
+
+    .cta_link-inverse:hover::before {
+      animation: slideIn 0.4s forwards ease-out;
+    }
+
+    .cta_link-inverse,
+    .cta_link-inverse svg path {
+      animation: textLight 0.4s forwards;
+    }
+
+    .cta_link-inverse:hover,
+    .cta_link-inverse:hover svg path {
+      animation: textDark 0.4s forwards;
+    }
+  {% endif %}
+
+
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-101%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes slideOut {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-101%);
+    }
+  }
+
+  @keyframes textDark {
+    0% {
+      color: #fff;
+      fill: #fff;
+    }
+    100% {
+      color: #000;
+      fill: #000;
+    }
+  }
+
+  @keyframes textLight {
+    0% {
+      color: #000;
+      fill: #000;
+    }
+    100% {
+      color: #fff;
+      fill: #fff;
+    }
+  }
+
+</style>

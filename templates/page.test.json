@@ -19,10 +19,17 @@
       "settings": {
 
       }
+    },
+    "product_grid": {
+      "type": "test-product-grid",
+      "settings": {
+
+      }
     }
   },
   "order": [
     "header",
-    "banner"
+    "banner",
+    "product_grid"
   ]
 }

@@ -1,0 +1,57 @@
+{{"tpr-grid.css" |  asset_url |  stylesheet_tag}}
+
+{% style  %} 
+    .test-productGrid-section{
+        --spacing: {{section.settings.padding}}px;
+    }
+ {% endstyle %}
+
+<section id="test-productGrid-{{section.id}}" class="test-productGrid-section">
+  <div class="heading">
+    <h1>
+        {{section.settings.header}}
+  </h1>
+  </div>
+  <div class="test-product-grid">
+    {% content_for 'blocks' %}
+  </div>
+</section>
+
+{%schema%}
+    {
+        "name": "Test-product-grid",
+        "blocks": [
+            { "type": "@theme"}
+        ],
+        "settings": [
+            {
+                "type": "header",
+                "content": "Spacing"
+            },
+            {
+                "type": "range",
+                "id": "padding",
+                "label": "Padding",
+                "min": 10,
+                "max": 100,
+                "step": 2,
+                "default": 22
+            },
+            {
+                "type": "header",
+                "content": "Heading"
+            },
+            {
+                "type": "text",
+                "id": "header",
+                "label": "Heading",
+                "default": "Tisso Vision"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Test Product Grid"
+            }
+        ]
+    }
+{% endschema %}

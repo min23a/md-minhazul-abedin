@@ -1,0 +1,19 @@
+.test-productGrid-section {
+  padding: var(--spacing) 2rem;
+}
+.test-product-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .test-productGrid-section {
+    padding: var(--spacing) 4rem;
+  }
+
+  .test-product-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

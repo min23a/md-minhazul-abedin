@@ -1,0 +1,188 @@
+{%- liquid
+  assign p = block.settings.product
+  assign x = block.settings.pos_x | default: 50
+  assign y = block.settings.pos_y | default: 50
+  assign uid = section.id | append: '-' | append: block.id
+  assign form_id = 'tpcForm-' | append: uid
+-%}
+
+{% style %}
+  tpc-hotspot {
+    --tpc-x: {{ x }};
+    --tpc-y: {{ y }};
+  }
+{% endstyle %}
+
+{%- if p != blank -%}
+  {{ 'test-pr-card.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'test-pr-card.js' | asset_url }}" defer="defer"></script>
+
+  <div class="tpc">
+    {%- if p.featured_media -%}
+      {{ p.featured_media
+ | image_url: width: 900
+ | image_tag:
+ widths: '220, 330, 440, 660, 880',
+ sizes: '(min-width: 990px) 220px, 160px',
+ loading: 'lazy',
+ class: 'tpcModal__img'
+      }}
+    {%- endif -%}
+    <tpc-hotspot
+      class="tpcHotspot"
+      data-tpc
+      data-tpc-id="{{ uid }}">
+      <button
+        class="tpcHotspot__pin"
+        type="button"
+        aria-haspopup="dialog"
+        aria-controls="tpcModal-{{ uid }}"
+        aria-expanded="false"
+        data-tpc-open>
+        <span class="tpcHotspot__plus" aria-hidden="true">+</span>
+        <span class="visually-hidden">Open {{ p.title | escape }}</span>
+      </button>
+
+      <div
+        class="tpcHotspot__backdrop"
+        hidden
+        data-tpc-close></div>
+    </tpc-hotspot>
+  </div>
+  <div
+    id="tpcModal-{{ uid }}"
+    class="tpcModal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="{{ p.title | escape }}"
+    hidden
+    data-tpc-modal>
+    <button
+      class="tpcModal__close"
+      type="button"
+      aria-label="Close"
+      data-tpc-close>
+      ×
+    </button>
+
+    <div class="tpcModal__grid">
+      <div class="tpcModal__media">
+        {%- if p.featured_media -%}
+          {{ p.featured_media
+ | image_url: width: 900
+ | image_tag:
+ widths: '220, 330, 440, 660, 880',
+ sizes: '(min-width: 990px) 220px, 160px',
+ loading: 'lazy',
+ class: 'tpcModal__img'
+          }}
+        {%- endif -%}
+      </div>
+
+      <div class="tpcModal__info">
+        <h3 class="tpcModal__title">{{ p.title }}</h3>
+
+        <div class="tpcModal__price">
+          {%- render 'price'
+            , product: p
+            , use_variant: true -%}
+        </div>
+
+        {%- if p.description != blank -%}
+          <div class="tpcModal__desc rte">
+            {{ p.description | strip_html | truncate: 150 }}
+          </div>
+        {%- endif -%}
+      </div>
+      {%- assign v = p.selected_or_first_available_variant -%}
+      <product-form class="tpcModal__form" data-section-id="{{ section.id }}">
+        {%- form "product"
+          , p
+          , id: form_id
+          , class: 'form'
+          , novalidate: 'novalidate'
+          , data-type: 'add-to-cart-form' -%}
+          <input
+            type="hidden"
+            name="id"
+            value="{{ v.id }}"
+            data-tpc-variant-id>
+
+          {%- unless p.has_only_default_variant -%}
+            <div class="tpcModal__options">
+              {%- for option in p.options_with_values -%}
+                <div class="tpcModal__option">
+                  <label class="tpcModal__label">{{ option.name }}</label>
+                  <select
+                    class="tpcModal__select"
+                    name="options[{{ option.name | escape }}]"
+                    data-tpc-option>
+                    {%- for value in option.values -%}
+                      <option
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}
+                        selected
+                        {% endif %}>
+                        {{ value }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                </div>
+              {%- endfor -%}
+            </div>
+
+            <script type="application/json" data-tpc-variants>
+                                      {{ p.variants | json }}
+            </script>
+          {%- endunless -%}
+
+          <button
+            type="submit"
+            name="add"
+            class="button button--full-width tpcModal__atc"
+            {% unless v.available %}
+            disabled
+            {% endunless %}>
+            <span>
+              {%- if v.available -%}Add to cart{%- else -%}Sold out{%- endif -%}
+            </span>
+          </button>
+        {%- endform -%}
+      </product-form>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Test Product Card",
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      }, {
+        "type": "range",
+        "id": "pos_x",
+        "label": "X position (%) from left",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 50
+      }, {
+        "type": "range",
+        "id": "pos_y",
+        "label": "Y position (%) from top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 50
+      }
+    ],
+    "presets": [
+      {
+        "name": "Test Product Block"
+      }
+    ]
+  }
+{% endschema %}

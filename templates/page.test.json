@@ -38,8 +38,68 @@
     },
     "product_grid": {
       "type": "test-product-grid",
+      "blocks": {
+        "pr_card_pTpm3q": {
+          "type": "pr-card",
+          "name": "Test Product Block",
+          "settings": {
+            "product": "black-leather-bag",
+            "pos_x": 50,
+            "pos_y": 50
+          },
+          "blocks": {}
+        },
+        "pr_card_4X3bci": {
+          "type": "pr-card",
+          "name": "Test Product Block",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "pos_x": 50,
+            "pos_y": 50
+          },
+          "blocks": {}
+        },
+        "pr_card_XDBqX8": {
+          "type": "pr-card",
+          "name": "Test Product Block",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "pos_x": 50,
+            "pos_y": 50
+          },
+          "blocks": {}
+        },
+        "pr_card_LCGha7": {
+          "type": "pr-card",
+          "name": "Test Product Block",
+          "settings": {
+            "product": "classic-leather-jacket",
+            "pos_x": 50,
+            "pos_y": 50
+          },
+          "blocks": {}
+        },
+        "pr_card_PPGaFw": {
+          "type": "pr-card",
+          "name": "Test Product Block",
+          "settings": {
+            "product": "classic-varsity-top",
+            "pos_x": 50,
+            "pos_y": 50
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "pr_card_pTpm3q",
+        "pr_card_4X3bci",
+        "pr_card_XDBqX8",
+        "pr_card_LCGha7",
+        "pr_card_PPGaFw"
+      ],
       "settings": {
-
+        "padding": 22,
+        "header": "Tisso Vision"
       }
     }
   },

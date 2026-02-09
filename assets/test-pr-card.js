@@ -161,7 +161,7 @@ class TpcHotspot extends HTMLElement {
             .querySelectorAll("[data-tpc-swatch-group][data-tpc-option]")
             .forEach((group) => {
                 const idx = Number(group.getAttribute("data-tpc-option-index") || "0");
-                const checked = group.querySelector(".tpcSwatches__input:checked");
+                const checked = group.querySelector("input[type='radio']:checked");
                 if (checked) byIndex.set(idx, checked.value);
             });
 
@@ -193,7 +193,14 @@ class TpcHotspot extends HTMLElement {
         }
 
         // THIS LINE FIXES THE "always first variant" issue
+        // Update BOTH property + attribute (safe for all themes)
         this.variantInput.value = match.id;
+        this.variantInput.setAttribute("value", match.id);
+
+        // Fire events so anything listening can react
+        this.variantInput.dispatchEvent(new Event("change", { bubbles: true }));
+        this.variantInput.dispatchEvent(new Event("input", { bubbles: true }));
+
 
         if (this.atcBtn) this.atcBtn.disabled = !match.available;
     }

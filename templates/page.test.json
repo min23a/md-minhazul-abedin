@@ -1,4 +1,12 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme_custom",
   "sections": {
@@ -14,10 +22,18 @@
         "btn__hvr_clr": "#000000"
       }
     },
-    "banner" :{
+    "banner": {
       "type": "test-banner",
       "settings": {
-
+        "img": "shopify://shop_images/Group_1000008197.png",
+        "content_position": "bottom-left",
+        "heading": "The Gift Guide",
+        "text": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>",
+        "cta_text": "Shop Now",
+        "cta": "shopify://collections/all",
+        "btn_clr": "#000000",
+        "btn__hvr_clr": "#fff544",
+        "bottom_text": "<p>SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL</p>"
       }
     },
     "product_grid": {

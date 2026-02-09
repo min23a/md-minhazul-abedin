@@ -175,12 +175,6 @@ class TpcHotspot extends HTMLElement {
 
         const selected = this.getSelectedOptionsInOrder();
 
-        // If any option is still placeholder, keep ATC disabled and do nothing
-        // if (selected.some((v) => !v)) {
-        //     if (this.atcBtn) this.atcBtn.disabled = true;
-        //     return;
-        // }
-        console.log(selected);
 
         // Try to find exact matching variant
         const match = this.variants.find((v) =>
@@ -190,10 +184,10 @@ class TpcHotspot extends HTMLElement {
         );
 
         // If no match, disable ATC
-        // if (!match) {
-        //     if (this.atcBtn) this.atcBtn.disabled = true;
-        //     return;
-        // }
+        if (!match) {
+            if (this.atcBtn) this.atcBtn.disabled = true;
+            return;
+        }
 
         // THIS LINE FIXES THE "always first variant" issue
         // Update BOTH property + attribute (safe for all themes)

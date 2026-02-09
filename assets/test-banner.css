@@ -22,11 +22,13 @@
 .banner {
   min-height: 560px;
 }
+
 @media screen and (min-width: 750px) {
   .banner {
     min-height: 560px;
   }
 }
+
 @media screen and (min-width: 990px) {
   .banner {
     min-height: 700px;
@@ -74,7 +76,7 @@
 
 .banner__overlay--middle-left {
   top: 50%;
-  left: 50%;
+  left: 0%;
   transform: translateY(-50%);
 }
 .banner__overlay--middle-center {
@@ -108,6 +110,7 @@
 .banner__heading {
   font-size: 7rem;
   font-weight: 600;
+  margin: 0;
 }
 
 /* banner cta */
@@ -138,10 +141,144 @@
   width: 100%;
 }
 
+.banner__text {
+  display: block;
+}
+
+.banner_text_mbl {
+  display: none;
+}
+
 .banner__bottom p {
   margin: 0;
 }
 
+.banner__bottom_mbl {
+  display: none;
+}
+.banner__bottom-dsk {
+  display: block;
+}
+
 .banner .cta {
   max-width: 200px;
+}
+
+/* =========================================================
+   MOBILE: pixel-perfect banner layout (no HTML changes)
+   Paste at END of banner CSS
+========================================================= */
+@media screen and (max-width: 749px) {
+  /* section sizing */
+  .banner {
+    padding: 0; /* full-bleed like screenshot */
+    min-height: 400px; /* adjust if needed */
+    overflow: hidden;
+  }
+
+  /* background image full cover */
+  .banner__media {
+    position: absolute;
+    inset: 0;
+  }
+  .banner__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* overlay becomes a positioning context */
+  .banner__overlay {
+    min-height: 100%; /* follow banner height */
+    height: 100%;
+  }
+
+  /* content box: centered, with generous top spacing */
+  .banner__content {
+    left: 50%;
+    top: 20%;
+    right: auto;
+    bottom: auto;
+    transform: translateX(-50%);
+    background: #fff;
+    width: calc(100% - 48px); /* safe side gutters */
+    max-width: 360px; /* keeps it tight like screenshot */
+    min-width: 0;
+    padding: 2rem 0 1rem 0; /* remove big white card feel */
+    color: #000;
+    text-align: center;
+  }
+
+  .banner__text {
+    display: none;
+  }
+
+  .banner_text_mbl {
+    display: block;
+  }
+
+  .banner_info {
+    background: #fff;
+  }
+
+  /* heading + text sizing like screenshot */
+  .banner__heading {
+    font-size: 34px;
+    line-height: 1.05;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+
+  .banner__text,
+  .banner__content p {
+    font-size: 16px;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  /* CTA centered, with spacing */
+  .banner_cta {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    background: none;
+    position: absolute;
+    top: 150%;
+  }
+
+  /* CTA width like screenshot (black bar) */
+  .banner .cta {
+    width: 220px;
+    max-width: 220px;
+  }
+  .cta .test-link {
+    width: 100%;
+    justify-content: center;
+    padding: 0 18px !important;
+  }
+
+  /* bottom bar should appear inside banner like screenshot */
+  .banner__bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    background: #eaeaea;
+    z-index: 3;
+  }
+
+  .banner__bottom-mbl p {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .banner__bottom_mbl {
+    display: block;
+  }
+
+  .banner__bottom-dsk {
+    display: none;
+  }
 }

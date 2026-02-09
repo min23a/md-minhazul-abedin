@@ -1,13 +1,23 @@
 {{ "test-header.css" | asset_url | stylesheet_tag }}
+<script src="{{ 'test-header.js' | asset_url }}" defer="defer"></script>
 
 {% style %}
   header {
     --button-color: {{ section.settings.btn_clr }};
     --button-hvr-clr: {{ section.settings.btn__hvr_clr }};
+    position: relative;
+    display: block;
   }
 {% endstyle %}
 
 <div id="header-{{section.id}}" class="test_header">
+  <mobile-header class="mobile_header" data-open="false">
+    <div class="mobile_bar">
+      {{ 'icon-ham.svg' | inline_asset_content }}
+      {{ 'icon-cross.svg' | inline_asset_content }}
+    </div>
+  </mobile-header>
+
   <div class="logo">
     <a class="logo_link test-link" href={{section.settings.logo_url}}>{{ section.settings.logo_text }}</a>
   </div>
@@ -20,7 +30,27 @@
  cta: section.settings.btn_url
     ,
  cta_text: section.settings.btn_text
+    ,
+ cls: "dsk_cta"
   %}
+</div>
+<div class="mobile_header_dropdown">
+  <div class="mobile_announcement">
+    {{ section.settings.announcement }}
+  </div>
+  <div class="mbl_cta_cont">
+
+    {% render 'test-cta'
+      ,
+ inverse: false
+      ,
+ cta: section.settings.btn_url
+      ,
+ cta_text: section.settings.btn_text
+      ,
+ cls: "mbl_cta"
+    %}
+  </div>
 </div>
 
 

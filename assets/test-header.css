@@ -1,10 +1,78 @@
 .test_header {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "mobileBar logo";
+  justify-items: center;
   align-items: center;
-  justify-content: space-between;
   padding: 1rem 4rem;
   margin: auto;
   background: #eaeaea;
+}
+
+.mobile_header {
+  align-content: center;
+  grid-area: mobileBar;
+  height: 40px;
+  width: 40px;
+  z-index: 100;
+  background: #eaeaea;
+}
+
+.mobile_header[data-open="false"] .cross,
+.mobile_header[data-open="true"] .ham {
+  display: none;
+}
+
+.mobile_header[data-open="true"] .cross,
+.mobile_header[data-open="false"] .ham {
+  display: block;
+}
+
+.mobile_header_dropdown {
+  box-shadow: inset 0px 5px 15px -10px #000;
+  background: #eaeaea;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 3rem;
+}
+.mobile_header_dropdown {
+  max-height: 0;
+}
+
+.mobile_header_dropdown.is-open {
+  max-height: 500px;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.announcement {
+  grid-area: msg;
+}
+
+.cta {
+  grid-area: cta;
+}
+
+.mobile_announcement {
+  padding-top: 3rem;
+}
+
+.mbl_cta_cont {
+  padding-bottom: 3rem;
+}
+
+.mobile_announcement,
+.mbl_cta {
+  display: block;
+}
+
+.announcement,
+.dsk_cta {
+  display: none;
 }
 
 .logo_link {
@@ -20,4 +88,25 @@
 
 .announcment {
   flex-grow: 1;
+}
+
+@media only screen and (min-width: 750px) {
+  .test_header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "logo msg cta";
+  }
+  .mobile_header {
+    display: none;
+  }
+  .mobile_announcement,
+  .mbl_cta {
+    display: none;
+  }
+  .announcement,
+  .dsk_cta {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 900px) {
 }

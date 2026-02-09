@@ -1,5 +1,5 @@
 {% assign inverse = inverse %}
-<div class="cta">
+<div class="cta {{cls}}">
   <a class="cta_link{% if inverse == true %}-inverse{% endif %} test-link " href={{cta}}>{{ cta_text }} {{ 'icon-test-arrow.svg' | inline_asset_content }}</a>
 </div>
 

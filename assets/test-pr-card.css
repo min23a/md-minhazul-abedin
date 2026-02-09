@@ -142,6 +142,20 @@ tpc-hotspot {
   min-height: 3rem;
 }
 
+.tpcModal__atc span {
+  display: flex;
+  align-items: center;
+}
+
+.tpcModal__atc span svg path {
+  fill: #fff;
+}
+
+.tpcModal__atc span svg {
+  margin-left: 8px;
+  margin-top: 2px;
+}
+
 /* Swatches + sliding animation */
 .tpcSwatches {
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -211,16 +225,34 @@ tpc-hotspot {
 }
 
 /* Dawn breakpoints */
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 500px) {
+  .tpc {
+    max-height: 200px;
+  }
   .tpc img,
   .tpc__img {
-    height: 420px;
+    height: 100%;
   }
   .tpcModal {
     padding: 14px;
     max-width: 300px;
   }
 }
+
+@media screen and (min-width: 501px) and (max-width: 989px) {
+  .tpc {
+    max-height: 400px;
+  }
+  .tpc img,
+  .tpc__img {
+    height: 100%;
+  }
+  .tpcModal {
+    padding: 14px;
+    max-width: 300px;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .tpc img,
   .tpc__img {

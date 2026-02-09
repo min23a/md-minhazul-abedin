@@ -91,7 +91,7 @@ assign form_id = 'tpcForm-' | append: uid
       {%- endunless -%}
 
       <button type="submit" name="add" class="button button--full-width tpcModal__atc">
-        <span>Add to cart</span>
+        <span>Add to cart {{ 'icon-test-arrow.svg' | inline_asset_content }}</span>
 
         <div class="loading__spinner hidden" aria-hidden="true">
           <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66"

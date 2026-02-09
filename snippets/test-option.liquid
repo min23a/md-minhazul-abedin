@@ -1,0 +1,96 @@
+{% assign options = p.options_with_values | reverse %}
+
+{%- for option in options -%}
+  {%- assign opt_name = option.name | downcase -%}
+
+  <div class="tpcModal__option">
+    <label class="tpcModal__label">{{ option.name }}</label>
+
+    {%- if opt_name contains 'color' or opt_name contains 'colour' -%}
+      <fieldset
+        class="tpcSwatches"
+        data-tpc-swatch-group
+        data-tpc-option
+        data-tpc-option-index="{{ forloop.index0 }}"
+        style="--tpc-count: {{ option.values.size }};">
+        {%- for value in option.values -%}
+          {%- assign id = 'tpcSwatch-' | append: uid | append: '-' | append: forloop.parentloop.index0 | append: '-' | append: forloop.index0 -%}
+
+          <input
+            class="tpcSwatches__input"
+            type="radio"
+            id="{{ id }}"
+            name="tpc-swatch-{{ uid }}-{{ forloop.parentloop.index0 }}"
+            value="{{ value | escape }}"
+            {% if option.selected_value == value %}
+            checked{% endif %}>
+
+          <label
+            class="tpcSwatches__item"
+            for="{{ id }}"
+            title="{{ value | escape }}">
+            <span class="tpcSwatches__bar" style="--tpc-swatch: {{ value | downcase }};"></span>
+            <span class="tpcSwatches__text">{{ value }}</span>
+          </label>
+        {%- endfor -%}
+      </fieldset>
+    {%- else -%}
+      <tpc-select class="tpcSelect" data-tpc-option-index="{{ forloop.index0 }}">
+        <select
+          class="tpcSelect__native"
+          name="options[{{ option.name | escape }}]"
+          data-tpc-option
+          data-tpc-option-index="{{ forloop.index0 }}">
+          <option value="" selected>
+            Choose your {{ option.name | downcase }}
+          </option>
+          {%- for value in option.values -%}
+            <option value="{{ value | escape }}">
+              {{ value }}
+            </option>
+          {%- endfor -%}
+        </select>
+
+        <button
+          type="button"
+          class="tpcSelect__trigger"
+          aria-haspopup="listbox"
+          aria-expanded="false">
+          <span class="tpcSelect__value">{{ option.selected_value | default: option.values.first }}</span>
+          <span class="tpcSelect__chev" aria-hidden="true"></span>
+        </button>
+
+        <div class="tpcSelect__panel" hidden>
+          <ul class="tpcSelect__list" role="listbox">
+            <li>
+              <button
+                type="button"
+                class="tpcSelect__item"
+                data-tpc-select-item
+                data-value=""
+                aria-selected="true">
+                Choose your {{ option.name | downcase }}
+              </button>
+            </li>
+            {%- for value in option.values -%}
+              <li>
+                <button
+                  type="button"
+                  class="tpcSelect__item"
+                  data-tpc-select-item
+                  data-value="{{ value | escape }}"
+                  {% if option.selected_value == value %}
+                  aria-selected="true"
+                  {% else %}
+                  aria-selected="false"
+                  {% endif %}>
+                  {{ value }}
+                </button>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </tpc-select>
+    {%- endif -%}
+  </div>
+{%- endfor -%}

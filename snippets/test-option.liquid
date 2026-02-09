@@ -1,4 +1,4 @@
-{% assign options = p.options_with_values | reverse %}
+{% assign options = p.options_with_values %}
 
 {%- for option in options -%}
   {%- assign opt_name = option.name | downcase -%}
@@ -11,7 +11,7 @@
         class="tpcSwatches"
         data-tpc-swatch-group
         data-tpc-option
-        data-tpc-option-index="{{ forloop.index0 }}"
+        data-tpc-option-index="{{ forloop.index }}"
         style="--tpc-count: {{ option.values.size }};">
         {%- for value in option.values -%}
           {%- assign id = 'tpcSwatch-' | append: uid | append: '-' | append: forloop.parentloop.index0 | append: '-' | append: forloop.index0 -%}
@@ -35,12 +35,12 @@
         {%- endfor -%}
       </fieldset>
     {%- else -%}
-      <tpc-select class="tpcSelect" data-tpc-option-index="{{ forloop.index0 }}">
+      <tpc-select class="tpcSelect" data-tpc-option-index="{{ forloop.index }}">
         <select
           class="tpcSelect__native"
           name="options[{{ option.name | escape }}]"
           data-tpc-option
-          data-tpc-option-index="{{ forloop.index0 }}">
+          data-tpc-option-index="{{ forloop.index }}">
           <option value="" selected>
             Choose your {{ option.name | downcase }}
           </option>

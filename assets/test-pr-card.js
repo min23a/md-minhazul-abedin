@@ -165,8 +165,6 @@ class TpcHotspot extends HTMLElement {
                 if (checked) byIndex.set(idx, checked.value);
             });
 
-        console.log(byIndex)
-
         return Array.from(byIndex.entries())
             .sort((a, b) => a[0] - b[0])
             .map(([, v]) => v);
@@ -182,10 +180,13 @@ class TpcHotspot extends HTMLElement {
         //     if (this.atcBtn) this.atcBtn.disabled = true;
         //     return;
         // }
+        console.log(selected);
 
         // Try to find exact matching variant
         const match = this.variants.find((v) =>
+
             selected.every((val, idx) => v.options[idx] === val)
+
         );
 
         // If no match, disable ATC
@@ -196,6 +197,7 @@ class TpcHotspot extends HTMLElement {
 
         // THIS LINE FIXES THE "always first variant" issue
         // Update BOTH property + attribute (safe for all themes)
+
         this.variantInput.value = match.id;
         this.variantInput.setAttribute("value", match.id);
 

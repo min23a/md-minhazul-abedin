@@ -1,10 +1,3 @@
-/* =========================================================
-  TPC Hotspot + TPC Select
-  - Fix: always adding first variant
-  - Fix: hidden variant id not updating correctly
-  - Fix: reliable form targeting
-========================================================= */
-
 class TpcHotspot extends HTMLElement {
     constructor() {
         super();
@@ -185,7 +178,6 @@ class TpcHotspot extends HTMLElement {
 
         // If no match, disable ATC
         if (!match) {
-            if (this.atcBtn) this.atcBtn.disabled = true;
             return;
         }
 

@@ -29,11 +29,13 @@
         "content_position": "bottom-left",
         "heading": "The Gift Guide",
         "text": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>",
+        "text_mbl": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. </p>",
         "cta_text": "Shop Now",
         "cta": "shopify://collections/all",
         "btn_clr": "#000000",
         "btn__hvr_clr": "#fff544",
-        "bottom_text": "<p>SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL</p>"
+        "bottom_text": "<p>SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL</p>",
+        "bottom_text_mbl": "<p>SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR</p>"
       }
     },
     "product_grid": {
@@ -44,8 +46,8 @@
           "name": "Test Product Block",
           "settings": {
             "product": "black-leather-bag",
-            "pos_x": 50,
-            "pos_y": 50
+            "pos_x": 40,
+            "pos_y": 65
           },
           "blocks": {}
         },
@@ -54,8 +56,8 @@
           "name": "Test Product Block",
           "settings": {
             "product": "blue-silk-tuxedo",
-            "pos_x": 50,
-            "pos_y": 50
+            "pos_x": 30,
+            "pos_y": 56
           },
           "blocks": {}
         },
@@ -88,6 +90,16 @@
             "pos_y": 50
           },
           "blocks": {}
+        },
+        "pr_card_QLfJAR": {
+          "type": "pr-card",
+          "name": "Test Product Block",
+          "settings": {
+            "product": "dark-denim-top",
+            "pos_x": 40,
+            "pos_y": 65
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -95,11 +107,12 @@
         "pr_card_4X3bci",
         "pr_card_XDBqX8",
         "pr_card_LCGha7",
-        "pr_card_PPGaFw"
+        "pr_card_PPGaFw",
+        "pr_card_QLfJAR"
       ],
       "settings": {
         "padding": 22,
-        "header": "Tisso Vision"
+        "header": "Tisso Vision in the wild"
       }
     }
   },

@@ -96,14 +96,17 @@ class TpcHotspot extends HTMLElement {
     }
 
     onAnyChange(e) {
-        const isSelect = e.target.matches("select[data-tpc-option]");
-        const isSwatchRadio = e.target.matches("input.tpcSwatches__input");
+        // Accept any change inside an option control area
+        const inOption =
+            e.target.closest("select[data-tpc-option]") ||
+            e.target.closest("[data-tpc-swatch-group]");
 
-        if (!isSelect && !isSwatchRadio) return;
+        if (!inOption) return;
 
         this.syncSwatchActive();
         this.updateVariantFromOptions();
     }
+
 
     open() {
         this.modal.hidden = false;

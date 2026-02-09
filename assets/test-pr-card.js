@@ -165,6 +165,8 @@ class TpcHotspot extends HTMLElement {
                 if (checked) byIndex.set(idx, checked.value);
             });
 
+        console.log(byIndex)
+
         return Array.from(byIndex.entries())
             .sort((a, b) => a[0] - b[0])
             .map(([, v]) => v);
